@@ -9,35 +9,43 @@
     <script src="script.js" defer> </script>
 </head>
     <div class="page-wrap">
-        <div class="header" id="border">header</div>
-        <div class="content" id="border">content
-            <button id="addBtn"> + </button>
-                <div id="modalForm" class="modal">
+        <div class="header" id="border">
+             <button id="addBtn"> + </button>header</div>
+        <div class="content" id="border">
+            
+            <!-- <div class="card-wrap">ok </div> -->
+            
+             <!--- start modal-->
+            
+            <div id="modalForm" class="modal">
                     <div class="form-content">
                         <span class="exit"> &times; </span>
                         <p> Submit your information </p>
                         <div class="logData">
-                    <!-- <form class="form" id="contact-form"> -->
-                        <label for="title">Book Title</label>    
-                        <input id="title" name="title" type="text">
-                        <label for="author">Author</label>
-                        <input id="author" name="author" type="text">
-                        <label for="page">Total Pages</label>
-                        <input id="page" name="page" type="text">
-                        <label for="complete">Finished Reading?</label>
-                        <input id="complete" name="complete" type="text">
-                        <div>
-                        <button class="btn" type="submit" id="submit"> CREATE</button>
-                        <button class="btn" id="clearBtn"> Clear</button>
+                            <form class="formData">
+                                <label for="title">Book Title</label>    
+                                <input class="input" id="title" name="title" type="text" value=" ">
+                                
+                                <label for="author">Author</label>
+                                <input class="input" id="author" name="author" type="text">
+                                
+                                <label for="page">Total Pages</label>
+                                <input class="input" id="page" name="page" type="text">
+                                
+                                <label for="complete">Finished Reading?</label>
+                                <input class="input" id="complete" name="complete" type="text">
+                           </form>
+                                <div>
+                                <button class="btn" type="submit" id="submit"> CREATE</button>
+                                <button class="btn" id="clearBtn"> Clear</button>
+                            </div>
                         </div>
-                        <!-- </form> -->
-                    </div>
                     </div>
                 </div>
         </div>
 
 
-        <div class="content2" id="border">content 2</div>
+        <!-- <div class="content2" id="border">content 2</div> -->
         <div class="footer" id="border">footer</div>
         
     </div>

@@ -1,11 +1,11 @@
 // -----array----
  let library = [
-    {
-        title: "IT",
-        author: "Stephen King",
-        pages: 604,
-        complete: true
-    }
+    // {
+    //     title: "IT",
+    //     author: "Stephen King",
+    //     pages: 604,
+    //     complete: true
+    // }
  ];
 
  // ----dom elements----
@@ -18,6 +18,9 @@ $title = document.querySelector('#title');
 $author = document.querySelector('#author');
 $page = document.querySelector('#page');
 $complete = document.querySelector('#complete');
+$card = document.querySelector('.content');
+$input = document.querySelector('.input');
+$form = document.querySelector('.formData')
 
  // -----object constructor----
  function Book(title, author, page, complete) {
@@ -32,6 +35,8 @@ $complete = document.querySelector('#complete');
     //add button (modal popup)
     $newBookBtn.onclick = function() {
         $modalForm.style.display = "block";
+        clearForm();
+        // reloadModal();
     };
     
     //modal exit button
@@ -41,8 +46,12 @@ $complete = document.querySelector('#complete');
 //modal submit button
     $submit.onclick = function() {
         // e.preventDefault(); 
+        // clearCard();
         getUserInput();
+        // createCard();
+        displayAll();
         $modalForm.style.display = "none";
+        
     };
 
     // close modal when click outside modal
@@ -63,3 +72,37 @@ $complete = document.querySelector('#complete');
         console.log(newBook);
         library.push(newBook);
     };
+    
+    
+    function createCard() {
+        let cardContainer = document.createElement('div');
+        cardContainer.className = "card-container";
+        let cardTitle = document.createElement('p');
+        let cardAuthor = document.createElement('p');
+        let cardPage = document.createElement('p');
+        let cardComplete = document.createElement('p');
+        cardContainer.appendChild(cardTitle);
+        cardContainer.appendChild(cardAuthor);
+        cardContainer.appendChild(cardPage);
+        cardContainer.appendChild(cardComplete);
+        $card.appendChild(cardContainer);
+        cardTitle.innerHTML = "Book Title: " + title.value;
+        cardAuthor.innerHTML = "Author: " + author.value;
+        cardPage.innerHTML = "Total Pages: " + page.value;
+        cardComplete.innerHTML = "Finished? " + complete.value;
+    };
+    
+    
+    function clearForm() {
+        $form.reset();
+    }    
+    
+    function displayAll() {
+    library.forEach(function (Book) {
+        createCard();
+    });
+}
+    
+    function clearCard() {
+        $card.remove('div');
+    }
