@@ -1,21 +1,73 @@
-let modal = document.getElementById("modalForm");
-let btn = document.getElementById("addBtn");
-let span = document.getElementsByClassName("exit")[0];
 
-btn.onclick = function() {
-    modal.style.display = "block";
 
-}
 
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+// -----array----
+ let library = [
+    {
+        title: "IT",
+        author: "Stephen King",
+        pages: 604,
+        complete: true
     }
-}
+ ];
+ // ----dom elements----
+ 
+ // let btn = document.getElementById("addBtn");
+$modalForm = document.getElementById('modalForm');
+// $form = document.querySelector('#contact-form');?
+$newBookBtn = document.querySelector('#addBtn');
+$submit = document.querySelector('#submit')
+$clearBtn = document.querySelector('#clearBtn');
+$exitModal = document.getElementsByClassName('exit')[0];
+$title = document.querySelector('#title');
+$author = document.querySelector('#author');
+$page = document.querySelector('#page');
+$complete = document.querySelector('#complete');
+
+ // -----object----
+ function Book(title, author, page, complete) {
+     this.title = title;
+     this.author = author;
+     this.page = page;
+     this.complete = complete;
+    };
+    
+
+    
+ 
+    
+    // ------modal------
+    
+    $newBookBtn.onclick = function() {
+        $modalForm.style.display = "block";
+    }
+    
+    $exitModal.onclick = function () {
+        $modalForm.style.display = "none";
+    }
+
+    $submit.onclick = function(e) {
+        // e.preventDefault(); 
+        getUserInput();
+
+    };
+// window.onclick = function(event) {
+//     if (event.target == $modalForm) {
+//         $modalForm.style.display = "none";
+//     }
+// }
+// ------modal----
+
+
+   const getUserInput = () => {
+        let title = $title.value;
+        let author = $author.value;
+        let page = $page.value;
+        let complete = $complete.value;
+        newBook = new Book(title, author, page, complete);
+        console.log(newBook);
+        library.push(newBook);
+    };
 
 
 
@@ -24,12 +76,15 @@ window.onclick = function(event) {
 
 
 
+// ----form-----
 
-
-
-
-
-
+// function createBook(event) {
+//     event.preventDefault();
+//     const bookForm = new FormData(this);
+//     const entries = bookForm.entries();
+//     const data = Object.fromEntries(entries);
+//     console.log(data);
+// };
 
 
 
