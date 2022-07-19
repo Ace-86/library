@@ -21,12 +21,14 @@ $complete = document.querySelector('#complete');
 $card = document.querySelector('.content');
 $input = document.querySelector('.input');
 $form = document.querySelector('.formData')
+// $cardC = document.querySelectorAll('.card-container');
+
 
  // -----object constructor----
  function Book(title, author, page, complete) {
      this.title = title;
      this.author = author;
-     this.page = page;
+     this.page = page;0
      this.complete = complete;
     };
         
@@ -36,6 +38,7 @@ $form = document.querySelector('.formData')
     $newBookBtn.onclick = function() {
         $modalForm.style.display = "block";
         clearForm();
+        clearCard();
         // reloadModal();
     };
     
@@ -43,27 +46,24 @@ $form = document.querySelector('.formData')
     $exitModal.onclick = function () {
         $modalForm.style.display = "none";
     };
-//modal submit button
+    //modal submit button
     $submit.onclick = function() {
-        // e.preventDefault(); 
-        // clearCard();
         getUserInput();
-        // createCard();
         displayAll();
         $modalForm.style.display = "none";
         
     };
-
+    
     // close modal when click outside modal
     window.onclick = function(event) {
         if (event.target == $modalForm) {
             $modalForm.style.display = "none";
         }
     };
-
-
+    
+    
     // get user input; push into existing 'library' array
-   const getUserInput = () => {
+    const getUserInput = () => {
         let title = $title.value;
         let author = $author.value;
         let page = $page.value;
@@ -75,12 +75,13 @@ $form = document.querySelector('.formData')
     
     
     function createCard() {
-        let cardContainer = document.createElement('div');
+        cardContainer = document.createElement('div');
         cardContainer.className = "card-container";
         let cardTitle = document.createElement('p');
         let cardAuthor = document.createElement('p');
         let cardPage = document.createElement('p');
         let cardComplete = document.createElement('p');
+        // cardend = document.querySelectorAll('.card-container');
         cardContainer.appendChild(cardTitle);
         cardContainer.appendChild(cardAuthor);
         cardContainer.appendChild(cardPage);
@@ -98,11 +99,12 @@ $form = document.querySelector('.formData')
     }    
     
     function displayAll() {
-    library.forEach(function (Book) {
-        createCard();
-    });
-}
+        library.forEach(function (Book) {
+            createCard();
+        });
+    }
     
     function clearCard() {
-        $card.remove('div');
+       $card.innerHTML = " ";
+
     }
