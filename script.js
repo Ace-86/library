@@ -1,6 +1,3 @@
-
-
-
 // -----array----
  let library = [
     {
@@ -22,7 +19,7 @@ $author = document.querySelector('#author');
 $page = document.querySelector('#page');
 $complete = document.querySelector('#complete');
 
- // -----object----
+ // -----object constructor----
  function Book(title, author, page, complete) {
      this.title = title;
      this.author = author;
@@ -35,12 +32,12 @@ $complete = document.querySelector('#complete');
     //add button (modal popup)
     $newBookBtn.onclick = function() {
         $modalForm.style.display = "block";
-    }
+    };
     
     //modal exit button
     $exitModal.onclick = function () {
         $modalForm.style.display = "none";
-    }
+    };
 //modal submit button
     $submit.onclick = function() {
         // e.preventDefault(); 
@@ -53,10 +50,10 @@ $complete = document.querySelector('#complete');
         if (event.target == $modalForm) {
             $modalForm.style.display = "none";
         }
-    }
+    };
 
 
-
+    // get user input; push into existing 'library' array
    const getUserInput = () => {
         let title = $title.value;
         let author = $author.value;
@@ -66,9 +63,3 @@ $complete = document.querySelector('#complete');
         console.log(newBook);
         library.push(newBook);
     };
-
-
-
-
-
-
