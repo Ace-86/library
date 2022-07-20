@@ -21,7 +21,6 @@ $complete = document.querySelector('#complete');
 $card = document.querySelector('.content');
 $input = document.querySelector('.input');
 $form = document.querySelector('.formData')
-// $cardC = document.querySelectorAll('.card-container');
 
 
  // -----object constructor----
