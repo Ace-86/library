@@ -1,3 +1,5 @@
+/* layout settings */
+
 body {
     background-color: gainsboro;
 }
@@ -84,14 +86,38 @@ input {
 
 /* card for each object */
 .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     border-radius: 5%;
     border: 3px dotted purple;
+    justify-content: space-around;
     color: blue;
     font-weight: 900;
     font-size: 20px;
-    height: 200px; 
+    height: 300px; 
     width: 200px;
-    background-color: rgba(128, 0, 128, 0.432);
-    margin: 20px;
+    background-color: rgba(128, 0, 128, 0.5);
+    margin: 10px;
     padding: 10px;
+}
+
+
+/* card buttons */
+.buttonSection {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.removeBtn {
+    height: 20px;
+    width: 40px;
+    background-color: red;
+}
+
+.editBtn {
+    height: 20px;
+    width: 40px;
+    background-color: yellowgreen;
 }
