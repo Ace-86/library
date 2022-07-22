@@ -14,7 +14,7 @@ solved: went back to using form as container for inputs (not buttons). created a
 
 7/21 -
 Issues: 
-1- cards all update to last user input
+1- cards all update to last user input(cloning) -- fixed
 2- cannot remove cards
 3- cannot edit cards
 4- buttons move out of card if info too large
