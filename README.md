@@ -1,4 +1,4 @@
-Project: The goal is to create a blibrary application that will allow you to keep track of which page your on in each book.
+Project: The goal is to create a library application that will allow you to keep track of which page your on in each book.
 
 
 Issues: 
@@ -12,3 +12,9 @@ Issue: Cannot get rid of modal input info when addbookbutton is pressed.
 
 solved: went back to using form as container for inputs (not buttons). created a function that would reset form everytime addbookBtn is pressed. Removed modal from html contents div and placed it in footer div. This caused issues because when trying to reset the cards, the modal would also be cleared since it was a child of the parent container.
 
+7/21 -
+Issues: 
+1- cards all update to last user input
+2- cannot remove cards
+3- cannot edit cards
+4- buttons move out of card if info too large
