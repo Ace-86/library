@@ -30,15 +30,13 @@ $form = document.querySelector('.formData')
      this.page = page;
      this.complete = complete;
     };
-        
-    // ------modal------
-    
+
+    // ------modal------    
     //add button (modal popup)
     $newBookBtn.onclick = function() {
         $modalForm.style.display = "block";
         clearForm();
         // clearCard();
-        // reloadModal();
     };
     
     //modal exit button
@@ -49,7 +47,6 @@ $form = document.querySelector('.formData')
     $submit.onclick = function() {
         getUserInput();
         createCard();
-        // indexedD();
         $modalForm.style.display = "none";
         
     };
@@ -60,9 +57,7 @@ $form = document.querySelector('.formData')
             $modalForm.style.display = "none";
         }
     };
-    
-    
-    
+        
     // get user input; push into existing 'library' array
     const getUserInput = () => {
         let title = $title.value;
@@ -74,97 +69,41 @@ $form = document.querySelector('.formData')
         library.push(newBook);
     };
     
-    ``
+
     function createCard() {
-        // library.forEach(function() {
-        var cardContainer = document.createElement('div');
-        cardContainer.className = "card-container";
-        let cardTitle = document.createElement('p');
-        let cardAuthor = document.createElement('p');
-        let cardPage = document.createElement('p');
-        let cardComplete = document.createElement('p');
-        let removeCard = document.createElement('button');
-        let editCard = document.createElement('button');
-        let buttonSection = document.createElement('div');
-
-        buttonSection.className = 'buttonSection';
-        removeCard.className = 'removeBtn';
-        removeCard.textContent = "X";
-        editCard.className = 'editBtn';
-        editCard.textContent = 'Edit';
-        // cardend = document.querySelectorAll('.card-container');
-        cardContainer.appendChild(cardTitle);
-        cardContainer.appendChild(cardAuthor);
-        cardContainer.appendChild(cardPage);
-        cardContainer.appendChild(cardComplete);
-        cardContainer.appendChild(buttonSection);
-        buttonSection.appendChild(removeCard);
-        buttonSection.appendChild(editCard);
-        $card.appendChild(cardContainer);
-
-        cardTitle.innerHTML = "Book Title: " + title.value;
-        cardAuthor.innerHTML = "Author: " + author.value;
-        cardPage.innerHTML = "Total Pages: " + page.value;
-        cardComplete.innerHTML = "Finished? " + complete.value;    
-    // });
+        clearCard();
+        library.forEach((book, i) => {
+            const cardContainer = `<div class="card-container" data-index=${i}>
+                                        <p>Book Title: ${book.title}</p>
+                                            <p>Book Author: ${book.author}</p>
+                                            <p>Total Pages: ${book.page}</p>
+                                                <div class="buttonSection">
+                                                    <button class="removeBtn"> X </button>
+                                                    <button class= "editBtn"> Edit </button>
+                                                </div>
+                                        </div>`
+            const elementdiv = document.createElement('div');
+            elementdiv.innerHTML= cardContainer;
+            $card.appendChild(elementdiv);      
+        });
     };
-    
     
     function clearForm() {
         $form.reset();
     }    
     
     function displayAll() {
+        clearCard();
         library.forEach(function() {
             createCard();
         });
     }
     
     function clearCard() {
-       $card.innerHTML = " ";
+        $card.innerHTML = " ";
     }
-    
-    // $remove.onclick(function(e) {
-        // deleteCard();
-    // }) ;
-    // // function edit() {
 
-    // }
-
-    
     function deleteCard() {
         library.splice(0, 1);
         console.log(library);
     }
-
-// function indexedD() {
-//     const index = $(this).attr('data-layer');
-//     const newIndex = Number(index) + 1;
-//     $(this).attr('data-layer', newIndex);
-//     console.log(this);
-// }
-
-
-    
-    // function populateBooks(myLib, bookView) {
-    //     document.querySelectorAll('.book-card').forEach(e => e.remove());
-        
-    //       myLib.forEach((book, i) => {
-    //         const card = `<div class="book-card" data-index=${i}>
-    //                                 <div class="card-info-wrapper">
-    //                                      <h2>${book.title}</h2>
-    //                                      <h3>${book.author}</h3>
-    //                                      <h4>${book.pages} Pages</h4>
-    //                                      <p>${book.info()}</p>
-    //                                          <div class="button">
-    //                                             Remove
-    //                                          </div>
-    //                                 </div>
-    //                             </div>`
-    //         const element = document.createElement('div');
-    //         element.innerHTML = card;
-    //         bookView.appendChild(element.firstChild);
-
-    ' kjgkjhgk'
-    title
-    " kjgkjhgk"
