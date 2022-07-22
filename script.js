@@ -36,7 +36,6 @@ $form = document.querySelector('.formData')
     $newBookBtn.onclick = function() {
         $modalForm.style.display = "block";
         clearForm();
-        // clearCard();
     };
     
     //modal exit button
@@ -48,7 +47,6 @@ $form = document.querySelector('.formData')
         getUserInput();
         createCard();
         $modalForm.style.display = "none";
-        
     };
     
     // close modal when click outside modal
@@ -58,6 +56,7 @@ $form = document.querySelector('.formData')
         }
     };
         
+
     // get user input; push into existing 'library' array
     const getUserInput = () => {
         let title = $title.value;
@@ -74,8 +73,8 @@ $form = document.querySelector('.formData')
         clearCard();
         library.forEach((book, i) => {
             const cardContainer = `<div class="card-container" data-index=${i}>
-                                        <p>Book Title: ${book.title}</p>
-                                            <p>Book Author: ${book.author}</p>
+                                        <p class='titles' data-index=${i}>${book.title}</p>
+                                            <p >Book Author: ${book.author}</p>
                                             <p>Total Pages: ${book.page}</p>
                                                 <div class="buttonSection">
                                                     <button class="removeBtn"> X </button>
@@ -84,26 +83,66 @@ $form = document.querySelector('.formData')
                                         </div>`
             const elementdiv = document.createElement('div');
             elementdiv.innerHTML= cardContainer;
-            $card.appendChild(elementdiv);      
+            $card.appendChild(elementdiv);
+
+            $deleteButton = document.querySelector('.removeBtn');
+            $deleteButton.addEventListener('click', deleteCard);
+            console.log(library);
+
         });
     };
-    
+
+    // buttonRM.onclick = function() {
+    //     deleteCard();
+    // }
+
     function clearForm() {
         $form.reset();
     }    
     
-    function displayAll() {
-        clearCard();
-        library.forEach(function() {
-            createCard();
-        });
-    }
-    
     function clearCard() {
-        $card.innerHTML = " ";
+        $card.innerHTML ="";
     }
 
-    function deleteCard() {
-        library.splice(0, 1);
-        console.log(library);
-    }
+    function marker() {
+        const mark = library.map(book => book.title);
+        console.log(mark);
+        };
+
+    // function deleteCard() {
+        
+        function deleteCard () {
+            b = document.querySelector('.titles');
+            index = library.findIndex(book => {
+                return book.title == b.innerHTML; 
+                // try searching innerhtml and removing space
+            });
+            console.log(index)
+        };
+            // library.splice(index, 1);
+            // createCard();
+        
+        
+        
+        // p = document.querySelector('.titles');
+        // const index = library.findIndex(book => {
+        //     return  book.title === p.innerHTML;
+            
+        // })
+        
+        
+        // library.splice(0, 1);
+        // console.log(index);
+        
+        // find indexof card with shared title
+        // splice that index from library
+    // };
+
+
+    
+    // function displayAll() {
+    //     clearCard();
+    //     library.forEach(function() {
+    //         createCard();
+    //     });
+    // }
