@@ -80,12 +80,25 @@ $form = document.querySelector('.formData')
         let cardAuthor = document.createElement('p');
         let cardPage = document.createElement('p');
         let cardComplete = document.createElement('p');
+        let removeCard = document.createElement('button');
+        let editCard = document.createElement('button');
+        let buttonSection = document.createElement('div');
+
+        buttonSection.className = 'buttonSection';
+        removeCard.className = 'removeBtn';
+        removeCard.textContent = "X";
+        editCard.className = 'editBtn';
+        editCard.textContent = 'Edit'
         // cardend = document.querySelectorAll('.card-container');
         cardContainer.appendChild(cardTitle);
         cardContainer.appendChild(cardAuthor);
         cardContainer.appendChild(cardPage);
         cardContainer.appendChild(cardComplete);
+        cardContainer.appendChild(buttonSection);
+        buttonSection.appendChild(removeCard);
+        buttonSection.appendChild(editCard);
         $card.appendChild(cardContainer);
+
         cardTitle.innerHTML = "Book Title: " + title.value;
         cardAuthor.innerHTML = "Author: " + author.value;
         cardPage.innerHTML = "Total Pages: " + page.value;
@@ -105,5 +118,4 @@ $form = document.querySelector('.formData')
     
     function clearCard() {
        $card.innerHTML = " ";
-
     }
