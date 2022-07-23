@@ -1,14 +1,7 @@
 // -----array----
- let library = [
-    // {
-    //     title: "IT",
-    //     author: "Stephen King",
-    //     pages: 604,
-    //     complete: true
-    // }
- ];
+ let library = [];
 
- // ----dom elements----
+ // ----dom elements (modal)----
 $modalForm = document.getElementById('modalForm');
 $newBookBtn = document.querySelector('#addBtn');
 $submit = document.querySelector('#submit')
@@ -21,14 +14,13 @@ $complete = document.querySelector('#complete');
 $card = document.querySelector('.content');
 $input = document.querySelector('.input');
 $form = document.querySelector('.formData')
-// $remove = document.querySelector('.removeBtn')
 
  // -----object constructor----
- function book(title, author, page, complete) {
+ function book(title, author, page, status) {
      this.title = title;
      this.author = author;
      this.page = page;
-     this.complete = complete;
+    //  this.status = status;
     };
 
     // ------modal------    
@@ -49,115 +41,93 @@ $form = document.querySelector('.formData')
         $modalForm.style.display = "none";
     };
     
-
-    // close modal when click outside modal
+    // closes modal when clicked outside modal window
     window.onclick = function(event) {
         if (event.target == $modalForm) {
             $modalForm.style.display = "none";
         }
     };
         
-
-    // get user input; push into existing 'library' array
+    // take user input and push into 'library' array
     const getUserInput = () => {
         let title = $title.value;
         let author = $author.value;
         let page = $page.value;
-        let complete = $complete.value;
-        newBook = new book(title, author, page, complete);
+        // let status = status;
+        newBook = new book(title, author, page, status);
         console.log(newBook);
         library.push(newBook);
     };
     
 
+    // creates card for each array item, and adds button functionality
     function createCard() {
         clearCard();
-        // getUserInput();
-        
         library.forEach((book, i) => {
             const cardContainer = `<div class="card-container" data-index=${i}>
-                                        <p class='titles' data-index=${i}>${book.title}</p>
+                                        <p class='titles'>Book Title: ${book.title}</p>
                                             <p >Book Author: ${book.author}</p>
                                             <p>Total Pages: ${book.page}</p>
                                                 <div class="buttonSection">
                                                     <button class="removeBtn"> X </button>
-                                                    <button class= "editBtn"> Edit </button>
+                                                    <button class= "bookStatus" id="stat"> </button>
                                                 </div>
                                         </div>`
             const elementdiv = document.createElement('div');
             elementdiv.innerHTML= cardContainer;
             $card.appendChild(elementdiv);
-            // $deleteButton = document.querySelector('.removeBtn');
-            // $deleteButton.addEventListener('click', deleteCard);
+            
+            $statusBtn = document.querySelector('#stat')
+            let status = 'Not Read'
+            $statusBtn.style.backgroundColor = 'rgb(177, 88, 88)'; //red
+            if (book.status) {
+                 status = 'Read';
+                $statusBtn.style.backgroundColor = 'rgb(41, 75, 40)'; //green
+            }
+            $statusBtn.textContent = status;
+
             console.log(library);
         });
-
         deleteCardEvent();
+        statusCarEvents()
     };
 
-    // buttonRM.onclick = function() {
-    //     deleteCard();
-    // }
-
+    // clears input form
     function clearForm() {
         $form.reset();
     }    
-    
+
+    // removes all cards on display (used to reset display)
     function clearCard() {
         $card.innerHTML ="";
     }
 
-    
-    function marker() {
-        const mark = library.map(book => book.title);
-        console.log(mark);
-        };
-
-    // function deleteCard() {
-        
+    // function remove cards from display and corresponding array object        
         function deleteCardEvent() {
             const removeButtons = document.querySelectorAll('.removeBtn');
             let removeArray = Array.from(removeButtons);
+            // console.log(removeArray);
             removeArray.forEach((button) => {
                 button.addEventListener('click', () => {
                     library.splice(removeArray.indexOf(button), 1);
-                    console.log(library);
+                    // console.log(library);
                     createCard();
                 });
             }); 
         };
 
 
-
-
-
-        
-        // function deleteCard () {
-        //     b = document.querySelector('.titles');
-        //     index = library.findIndex(book => {
-            //         return book.title == b.innerHTML; 
-            //         // try searching innerhtml and removing space
-            //     });
-            //     console.log(index)
-            // };
-            
-            function repopulate() {
-                
-                library.forEach((book, i) => {
-                    const cardContainer = `<div class="card-container" data-index=${i}>
-                                                <p class='titles' data-index=${i}>${book.title}</p>
-                                                    <p >Book Author: ${book.author}</p>
-                                                    <p>Total Pages: ${book.page}</p>
-                                                        <div class="buttonSection">
-                                                            <button class="removeBtn"> X </button>
-                                                            <button class= "editBtn"> Edit </button>
-                                                        </div>
-                                                </div>`
-                    const elementdiv = document.createElement('div');
-                    elementdiv.innerHTML= cardContainer;
-                    $card.appendChild(elementdiv);
-                    // $deleteButton = document.querySelector('.removeBtn');
-                    // $deleteButton.addEventListener('click', deleteCard);
-                    // console.log(library);
+        function statusCarEvents(){                                      
+            const statusButtons = document.querySelectorAll('.bookStatus')
+            let statusArray = Array.from(statusButtons)
+            // statusButtons.style.backgroundColor = 'rgb(177, 88, 88)';
+            statusArray.forEach((button) => {
+                button.addEventListener('click', () => {
+                        library[statusArray.indexOf(button)].status = 
+                        !(library[statusArray.indexOf(button)].status)
+                        // console.log(statusArray);
+                        createCard();
                 });
-            }
+                
+            });
+        }    
