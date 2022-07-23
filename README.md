@@ -1,4 +1,4 @@
-Project: The goal is to create a library application that will allow you to keep track of which page your on in each book.
+Project: The goal is to create a library application that will allow you to keep track of books your reading
 
 
 Log: 
@@ -15,7 +15,11 @@ Log:
 
 Issues: 
 1- cards all update to last user input(cloning) -- fixed
+
 2- cannot remove cards --fixed
+
 3- cannot edit cards
+
 4- buttons move out of card if info too large
+
 5- Cannot get rid of modal input info when addbookbutton is pressed. -- fixed
