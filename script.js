@@ -20,7 +20,6 @@ $form = document.querySelector('.formData')
      this.title = title;
      this.author = author;
      this.page = page;
-    //  this.status = status;
     };
 
     // ------modal------    
@@ -53,9 +52,7 @@ $form = document.querySelector('.formData')
         let title = $title.value;
         let author = $author.value;
         let page = $page.value;
-        // let status = status;
         newBook = new book(title, author, page, status);
-        console.log(newBook);
         library.push(newBook);
     };
     
@@ -70,23 +67,25 @@ $form = document.querySelector('.formData')
                                             <p>Total Pages: ${book.page}</p>
                                                 <div class="buttonSection">
                                                     <button class="removeBtn"> X </button>
-                                                    <button class= "bookStatus" id="stat"> </button>
+                                                    
                                                 </div>
                                         </div>`
             const elementdiv = document.createElement('div');
             elementdiv.innerHTML= cardContainer;
             $card.appendChild(elementdiv);
-            
-            $statusBtn = document.querySelector('#stat')
+            const $statusBtn = document.createElement('button');
+            $statusBtn.className ='stat';
+            elementdiv.appendChild($statusBtn);
+        
+            // const $statusBtn = document.querySelector('.stat');
             let status = 'Not Read'
             $statusBtn.style.backgroundColor = 'rgb(177, 88, 88)'; //red
             if (book.status) {
-                 status = 'Read';
+                status = 'Read';
                 $statusBtn.style.backgroundColor = 'rgb(41, 75, 40)'; //green
             }
             $statusBtn.textContent = status;
-
-            console.log(library);
+        
         });
         deleteCardEvent();
         statusCarEvents()
@@ -106,11 +105,9 @@ $form = document.querySelector('.formData')
         function deleteCardEvent() {
             const removeButtons = document.querySelectorAll('.removeBtn');
             let removeArray = Array.from(removeButtons);
-            // console.log(removeArray);
             removeArray.forEach((button) => {
                 button.addEventListener('click', () => {
                     library.splice(removeArray.indexOf(button), 1);
-                    // console.log(library);
                     createCard();
                 });
             }); 
@@ -118,14 +115,12 @@ $form = document.querySelector('.formData')
 
 
         function statusCarEvents(){                                      
-            const statusButtons = document.querySelectorAll('.bookStatus')
+            const statusButtons = document.querySelectorAll('.stat')
             let statusArray = Array.from(statusButtons)
-            // statusButtons.style.backgroundColor = 'rgb(177, 88, 88)';
             statusArray.forEach((button) => {
                 button.addEventListener('click', () => {
                         library[statusArray.indexOf(button)].status = 
                         !(library[statusArray.indexOf(button)].status)
-                        // console.log(statusArray);
                         createCard();
                 });
                 
