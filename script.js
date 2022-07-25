@@ -65,20 +65,20 @@ $form = document.querySelector('.formData')
                                         <p class='titles'>Book Title: ${book.title}</p>
                                             <p >Book Author: ${book.author}</p>
                                             <p>Total Pages: ${book.page}</p>
-                                                <div class="buttonSection">
-                                                    <button class="removeBtn"> X </button>
-                                                    
-                                                </div>
+                                               
                                         </div>`
             const elementdiv = document.createElement('div');
+            elementdiv.className = 'contain1';
+            const removeButton = document.createElement('button');
+            removeButton.className = 'removeBtn';
+            removeButton.textContent = 'X';
             elementdiv.innerHTML= cardContainer;
             $card.appendChild(elementdiv);
             const $statusBtn = document.createElement('button');
             $statusBtn.className ='stat';
+            elementdiv.appendChild(removeButton);
             elementdiv.appendChild($statusBtn);
-        
-            // const $statusBtn = document.querySelector('.stat');
-            let status = 'Not Read'
+            let status = 'Not Read';
             $statusBtn.style.backgroundColor = 'rgb(177, 88, 88)'; //red
             if (book.status) {
                 status = 'Read';
