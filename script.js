@@ -16,11 +16,13 @@ $input = document.querySelector('.input');
 $form = document.querySelector('.formData')
 
  // -----object constructor----
- function book(title, author, page, status) {
+ class book {
+ constructor(title, author, page, status) {
      this.title = title;
      this.author = author;
      this.page = page;
     };
+ }
 
     // ------modal------    
     //add button (modal popup)
@@ -64,8 +66,7 @@ $form = document.querySelector('.formData')
             const cardContainer = `<div class="card-container" data-index=${i}>
                                         <p class='titles'>Book Title: ${book.title}</p>
                                             <p >Book Author: ${book.author}</p>
-                                            <p>Total Pages: ${book.page}</p>
-                                               
+                                            <p>Total Pages: ${book.page}</p>                                  
                                         </div>`
             const elementdiv = document.createElement('div');
             elementdiv.className = 'contain1';
@@ -109,6 +110,7 @@ $form = document.querySelector('.formData')
                 button.addEventListener('click', () => {
                     library.splice(removeArray.indexOf(button), 1);
                     createCard();
+                    console.log(removeArray)
                 });
             }); 
         };
