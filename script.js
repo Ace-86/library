@@ -83,7 +83,7 @@ constructor(title, author, page, status) {
             $statusBtn.style.backgroundColor = ' rgba(247, 244, 78, 0.966)'; //red
             if (book.status) {
                 status = 'Read';
-                $statusBtn.style.backgroundColor = 'rgba(0, 247, 33, 0.871)'; //green
+                $statusBtn.style.backgroundColor = 'rgba(0, 247, 33, 0.900)'; //green
             }
             $statusBtn.textContent = status;
         
