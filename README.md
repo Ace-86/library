@@ -2,7 +2,7 @@ Project: The goal is to create a library application that will allow you to keep
 
 
 Log: 
-- Can not understand how to create an object using user form and push it into an array. Trying formEntries with varied success. 
+
  - got rid of the form format and just used inputs directly to gather user info. Figured out how to save my objects into arrays. shows up in console.log
 - need to create cards for each object in the array. I want to cycle through the array and create a card for each object added. Getting my pushed object to display was tedious but i eventually figured it out. Problem is that if I create a new book profile multiple times, the display is simply added the old information below. by creating a grid layout in container div, I was able to use document.createElement('div') to create a new card for book submission. 
 
@@ -18,8 +18,8 @@ Issues:
 
 2- cannot remove cards --fixed
 
-3- cannot edit cards
+3- cannot edit cards- fixed
 
-4- buttons move out of card if info too large
+4- buttons move out of card if info too large - fixed
 
 5- Cannot get rid of modal input info when addbookbutton is pressed. -- fixed
