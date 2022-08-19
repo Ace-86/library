@@ -16,13 +16,13 @@ $input = document.querySelector('.input');
 $form = document.querySelector('.formData')
 
  // -----object constructor----
- class book {
- constructor(title, author, page, status) {
-     this.title = title;
-     this.author = author;
-     this.page = page;
-    };
- }
+class book {
+constructor(title, author, page, status) {
+    this.title = title;
+    this.author = author;
+    this.page = page;
+        };
+    }
 
     // ------modal------    
     //add button (modal popup)
@@ -80,10 +80,10 @@ $form = document.querySelector('.formData')
             elementdiv.appendChild(removeButton);
             elementdiv.appendChild($statusBtn);
             let status = 'Not Read';
-            $statusBtn.style.backgroundColor = 'rgb(177, 88, 88)'; //red
+            $statusBtn.style.backgroundColor = ' rgba(247, 244, 78, 0.966)'; //red
             if (book.status) {
                 status = 'Read';
-                $statusBtn.style.backgroundColor = 'rgb(41, 75, 40)'; //green
+                $statusBtn.style.backgroundColor = 'rgba(0, 247, 33, 0.871)'; //green
             }
             $statusBtn.textContent = status;
         
